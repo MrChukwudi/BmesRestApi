@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "wjZ4nfjfoLtlX+o6lXQVOQwE8UgiWBzdo6n/3JXhDxs=",
+  "Source": "BmesRestApi",
+  "BasePath": "_content/BmesRestApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
