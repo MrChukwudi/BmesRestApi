@@ -9,7 +9,60 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Controllers\" />
+    <None Remove="Database\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Product\" />
+    <None Remove="Models\Shared\" />
+    <None Remove="Repositories\" />
+    <None Remove="Repositories\Implementations\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Implementations\" />
+    <None Remove="Messages\" />
+    <None Remove="Messages\DataTransferObjects\" />
+    <None Remove="Messages\Requests\" />
+    <None Remove="Messages\Response\" />
+    <None Remove="Messages\DataTransferObjects\Shared\" />
+    <None Remove="Messages\DataTransferObjects\Product\" />
+    <None Remove="Messages\Requests\Product\" />
+    <None Remove="Messages\Response\Product\" />
+    <None Remove="Messages\Requests\Brand\" />
+    <None Remove="Messages\Requests\Category\" />
+    <None Remove="Messages\Response\Brand\" />
+    <None Remove="Messages\Response\Category\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Database\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Product\" />
+    <Folder Include="Models\Shared\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\Implementations\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Implementations\" />
+    <Folder Include="Messages\" />
+    <Folder Include="Messages\DataTransferObjects\" />
+    <Folder Include="Messages\Requests\" />
+    <Folder Include="Messages\Response\" />
+    <Folder Include="Messages\DataTransferObjects\Shared\" />
+    <Folder Include="Messages\DataTransferObjects\Product\" />
+    <Folder Include="Messages\Requests\Product\" />
+    <Folder Include="Messages\Response\Product\" />
+    <Folder Include="Messages\Requests\Brand\" />
+    <Folder Include="Messages\Requests\Category\" />
+    <Folder Include="Messages\Response\Brand\" />
+    <Folder Include="Messages\Response\Brand\" />
+    <Folder Include="Messages\Response\Category\" />
+  </ItemGroup>
 </Project>

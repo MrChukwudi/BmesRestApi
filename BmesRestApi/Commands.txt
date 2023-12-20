@@ -1,0 +1,45 @@
+dotnet tool install --local dotnet-ef
+dotnet tool uninstall --global dotnet-ef
+dotnet tool install --global dotnet-ef --version 3.0.0
+
+dotnet tool install --global dotnet-ef
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+dotnet ef migrations add InitialCreate
+dotnet ef migrations add Initial
+
+dotnet ef database update
+
+dotnet ef migrations add ProductSlugUpdate
+
+dotnet ef migrations add OrderUpdate
+
+dotnet ef database update
+
+dotnet ef migrations add Categories
+
+dotnet ef migrations add Initial --context NotelyDbContext
+
+dotnet ef database update --context NotelyDbContext
+
+dotnet ef migrations add Initial --context BmesDbContext
+
+dotnet ef database update --context BmesDbContext
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Swashbuckle.AspNetCore
+
+dotnet ef migrations add ProductCatalogue
+
+dotnet ef migrations add ShoppingCart
+
+dotnet ef migrations add Address
+
+dotnet ef migrations add AddressCustomerReg
+
+dotnet ef migrations add OrderOrderItemMigUpdate
+
+dotnet ef database update
