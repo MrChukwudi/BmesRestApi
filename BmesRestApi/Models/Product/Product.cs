@@ -5,6 +5,7 @@ namespace BmesRestApi.Models.Product
 {
 	public class Product : BaseObject
 	{
+        
         public string? Name { get; set; } = "";
 
         public string? Slug { get; set; } = "";
@@ -27,7 +28,7 @@ namespace BmesRestApi.Models.Product
 
         public decimal OldPrice { get; set; }
 
-        public int Quantity { get; set; }
+        public int QuantityInStock { get; set; }
 
         public bool IsBestSeller { get; set; }
 
@@ -35,11 +36,11 @@ namespace BmesRestApi.Models.Product
 
         public long CategoryId { get; set; }
 
-        public Category? Category { get; set; }
+        //public Category? Category { get; set; }
 
-        public long BrabdId { get; set; }
+        public long BrandId { get; set; }
 
-        public Brand? Brand { get; set; }
+        //public Brand? Brand { get; set; }
 
         public ProductStatus ProductStatus { get; set; }
 

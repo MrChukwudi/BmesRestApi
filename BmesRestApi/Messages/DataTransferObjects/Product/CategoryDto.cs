@@ -17,7 +17,7 @@ namespace BmesRestApi.Messages.DataTransferObjects.Product
 
         public string? MetaKeywords { get; set; } = "";
 
-        public CategoryStatus CategoryStatus { get; set; }
+        public int CategoryStatus { get; set; }
 
         public DateTimeOffset CreatedDate { get; set; }
 
