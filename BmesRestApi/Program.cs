@@ -2,6 +2,8 @@
 using BmesRestApi.Database;
 using BmesRestApi.Repositories;
 using BmesRestApi.Repositories.Implementations;
+using BmesRestApi.Services;
+using BmesRestApi.Services.Implementations;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,15 @@ builder.Services.AddDbContext<BmesDbContext>(options =>
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IBrandRepository, BrandRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+
+//Registering our Services and their Interfaces
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IBrandService, BrandService>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<ICatalogueService, CatalogueService>();
+
+
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
