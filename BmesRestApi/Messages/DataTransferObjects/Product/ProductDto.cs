@@ -38,7 +38,7 @@ namespace BmesRestApi.Messages.DataTransferObjects.Product
 
         public long CategoryId { get; set; }
 
-        public long BrabdId { get; set; }
+        public long BrandId { get; set; }
 
         public DateTimeOffset CreatedDate { get; set; }
 

@@ -8,20 +8,26 @@ namespace BmesRestApi.Messages
 	{
 		public Brand MapToBrand(BrandDto brandDto)
 		{
-			var brand = new Brand
-			{
-				Id = brandDto.Id,
-				Name = brandDto.Name,
-				Slug = brandDto.Slug,
-				Description = brandDto.Description,
-				MetaDescription = brandDto.MetaDescription,
-				MetaKeywords = brandDto.MetaKeywords,
-				BrandStatus = (BrandStatus)brandDto.BrandStatus,
-				ModifiedDate = brandDto.ModifiedDate,
-				IsDeleted = brandDto.IsDeleted
-			};
 
-			return brand;
+
+            var brand = new Brand();
+
+            if (brandDto != null)
+			{
+                brand.Id = brandDto.Id;
+				brand.Name = brandDto.Name;
+				brand.Slug = brandDto.Slug;
+				brand.Description = brandDto.Description;
+				brand.MetaDescription = brandDto.MetaDescription;
+				brand.MetaKeywords = brandDto.MetaKeywords;
+				brand.BrandStatus = (BrandStatus)brandDto.BrandStatus;
+				brand.ModifiedDate = brandDto.ModifiedDate;
+				brand.IsDeleted = brandDto.IsDeleted;
+                return brand;
+            };
+
+			throw new Exception("brandDto is null");
+			
 		}
 
 
@@ -100,23 +106,126 @@ namespace BmesRestApi.Messages
 		public Product MapToProduct(ProductDto productDto)
 		{
 			var product = new Product();
+			if(productDto != null)
+			{
+				product.Id = productDto.Id;
+				product.Name = productDto.Name;
+				product.Slug = productDto.Slug;
+				product.Description = productDto.Description;
+				product.MetaDescription = productDto.MetaDescription;
+				product.MetaKeywords = productDto.MetaKeywords;
+				product.SKU = productDto.SKU;
+				product.Model = productDto.Model;
+				product.ImageUrl = productDto.ImageUrl;
+				product.Price = productDto.Price;
+				product.SalePrice = productDto.SalePrice;
+				product.OldPrice = productDto.OldPrice;
+				product.QuantityInStock = productDto.QuantityInStock;
+				product.ProductStatus = (ProductStatus)productDto.ProductStatus;
+				product.IsBestSeller = productDto.IsBestSeller;
+				product.IsFeatured = productDto.IsFeatured;
+				product.CategoryId = productDto.CategoryId;
+				product.BrandId = productDto.BrandId;
+				product.CreatedDate = productDto.CreatedDate;
+				product.ModifiedDate = productDto.ModifiedDate;
+
+            }
+
+			return product;
+		}
+
+
+
+
+        public ProductDto MapToProductDto(Product product)
+        {
+            var productDto = new ProductDto();
+            if (product != null)
+            {
+                productDto.Id = product.Id;
+                productDto.Name = product.Name;
+                productDto.Slug = product.Slug;
+                productDto.Description = product.Description;
+                productDto.MetaDescription = product.MetaDescription;
+                productDto.MetaKeywords = product.MetaKeywords;
+                productDto.SKU = product.SKU;
+                productDto.Model = product.Model;
+                productDto.ImageUrl = product.ImageUrl;
+                productDto.Price = product.Price;
+                productDto.SalePrice = product.SalePrice;
+                productDto.OldPrice = product.OldPrice;
+                productDto.QuantityInStock = product.QuantityInStock;
+                productDto.ProductStatus = (int)product.ProductStatus;
+                productDto.IsBestSeller = product.IsBestSeller;
+                productDto.IsFeatured = product.IsFeatured;
+                productDto.CategoryId = product.CategoryId;
+                productDto.BrandId = product.BrandId;
+                productDto.CreatedDate = product.CreatedDate;
+                productDto.ModifiedDate = product.ModifiedDate;
+
+            }
+
+            return productDto;
+        }
+
+
+
+
+		/*
+		 ADDING MAPPINGS FOR LISTS
+		 */
+
+		//Mapping a ;ist of Returned Products to Product Dtos for sharing with a client:
+		public List<BrandDto> MapToBrandDtos(IEnumerable<Brand> brands)
+		{
+			var brandsDtos = new List<BrandDto>();
+
+			foreach(var brand in brands)
+			{
+				var brandDto = MapToBrandDto(brand);
+				brandsDtos.Add(brandDto);
+			}
+			return brandsDtos;
+		}
+
+
+
+        //Mapping a list of Returned Categories to Category Dtos for sharing with a client:
+
+        public List<CategoryDto> MapToCategoryDtos(IEnumerable<Category> categories)
+		{
+			var categoryDtos = new List<CategoryDto>();
+
+			foreach(var category in categories)
+			{
+				var categoryDto = MapToCategoryDto(category);
+				categoryDtos.Add(categoryDto);
+			}
+
+			return categoryDtos;
+		}
+
+
+
+
+        //Mapping a list of Returned Brands to Brand Dtos for sharing with a client:
+
+        public List<ProductDto> MapToProductDtos(IEnumerable<Product> products)
+		{
+			var productDtos = new List<ProductDto>();
+			foreach(var product in products)
+			{
+				var productDto = MapToProductDto(product);
+				productDtos.Add(productDto);
+			}
+
+			return productDtos;
 		}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-	}
+    }
 }
 

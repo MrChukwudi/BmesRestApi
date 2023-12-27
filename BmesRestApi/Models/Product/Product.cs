@@ -36,11 +36,11 @@ namespace BmesRestApi.Models.Product
 
         public long CategoryId { get; set; }
 
-        //public Category? Category { get; set; }
+        public Category? Category { get; set; }
 
         public long BrandId { get; set; }
 
-        //public Brand? Brand { get; set; }
+        public Brand? Brand { get; set; }
 
         public ProductStatus ProductStatus { get; set; }
 
