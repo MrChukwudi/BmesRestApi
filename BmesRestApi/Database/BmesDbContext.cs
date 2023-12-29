@@ -16,7 +16,8 @@ namespace BmesRestApi.Database
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Product> Products { get; set; }
-        public object Product { get; internal set; }
+
+        //public object Product { get; internal set; }
     }
 }
 

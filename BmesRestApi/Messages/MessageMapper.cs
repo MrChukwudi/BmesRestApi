@@ -46,8 +46,8 @@ namespace BmesRestApi.Messages
 				brandDto.Slug = brand.Slug;
 				brandDto.Description = brand.MetaDescription;
 				brandDto.MetaKeywords = brand.MetaKeywords;
-				brandDto.BrandStatus = (int)brand.BrandStatus;
-				brandDto.ModifiedDate = brand.ModifiedDate;
+                brandDto.BrandStatus = (int)brand.BrandStatus;
+                brandDto.ModifiedDate = brand.ModifiedDate;
                 brandDto.IsDeleted = brand.IsDeleted;
             }
 
@@ -171,22 +171,21 @@ namespace BmesRestApi.Messages
 
 
 
-		/*
+        /*
 		 ADDING MAPPINGS FOR LISTS
 		 */
 
-		//Mapping a ;ist of Returned Products to Product Dtos for sharing with a client:
-		public List<BrandDto> MapToBrandDtos(IEnumerable<Brand> brands)
-		{
-			var brandsDtos = new List<BrandDto>();
-
-			foreach(var brand in brands)
-			{
-				var brandDto = MapToBrandDto(brand);
-				brandsDtos.Add(brandDto);
-			}
-			return brandsDtos;
-		}
+        //Mapping a ;ist of Returned Products to Product Dtos for sharing with a client:
+        public List<BrandDto> MapToBrandDtos(IEnumerable<Brand> brands)
+        {
+            var brandDtos = new List<BrandDto>();
+            foreach (var brand in brands)
+            {
+                var brandDto = MapToBrandDto(brand);
+                brandDtos.Add(brandDto);
+            }
+            return brandDtos;
+        }
 
 
 

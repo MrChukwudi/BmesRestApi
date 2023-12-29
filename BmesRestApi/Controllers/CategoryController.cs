@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BmesRestApi.Messages.Requests.Category;
+﻿using BmesRestApi.Messages.Requests.Category;
 using BmesRestApi.Messages.Response.Category;
 using BmesRestApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace BmesRestApi.Controllers
 {
@@ -66,7 +62,8 @@ namespace BmesRestApi.Controllers
 
 
 
-        //UPDATE: api/category/id
+        //UPDATE: api/category
+        [HttpPut()]
         public ActionResult<UpdateCategoryResponse> PutCategory(UpdateCategoryRequest updateCategoryRequest)
         {
 

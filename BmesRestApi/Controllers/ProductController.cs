@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BmesRestApi.Messages.Requests.Product;
+﻿using BmesRestApi.Messages.Requests.Product;
 using BmesRestApi.Messages.Response.Product;
 using BmesRestApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace BmesRestApi.Controllers
 {
     [Route("api/[controller]")]
+
     [ApiController]
+
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
