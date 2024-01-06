@@ -43,3 +43,9 @@ dotnet ef migrations add AddressCustomerReg
 dotnet ef migrations add OrderOrderItemMigUpdate
 
 dotnet ef database update
+
+
+
+
+
+dotnet ef migrations add ProductCatalogue

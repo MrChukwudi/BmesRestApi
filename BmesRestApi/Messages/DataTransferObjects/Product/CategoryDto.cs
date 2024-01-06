@@ -19,7 +19,7 @@ namespace BmesRestApi.Messages.DataTransferObjects.Product
 
         public int CategoryStatus { get; set; }
 
-        public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset CreateDate { get; set; }
 
         public DateTimeOffset ModifiedDate { get; set; }
 

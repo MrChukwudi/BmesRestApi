@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BmesRestApi.Migrations
 {
     /// <inheritdoc />
-    public partial class productCatalogue : Migration
+    public partial class ProductCatalogue : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,9 +22,9 @@ namespace BmesRestApi.Migrations
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     MetaDescription = table.Column<string>(type: "TEXT", nullable: true),
                     MetaKeywords = table.Column<string>(type: "TEXT", nullable: true),
-                    BrabdStatus = table.Column<int>(type: "INTEGER", nullable: false),
+                    BrandStatus = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
-                    ModiefiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -45,7 +45,7 @@ namespace BmesRestApi.Migrations
                     MetaKeywords = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryStatus = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
-                    ModiefiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -70,15 +70,14 @@ namespace BmesRestApi.Migrations
                     Price = table.Column<decimal>(type: "TEXT", nullable: false),
                     SalePrice = table.Column<decimal>(type: "TEXT", nullable: false),
                     OldPrice = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    QuantityInStock = table.Column<int>(type: "INTEGER", nullable: false),
                     IsBestSeller = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsFeatured = table.Column<bool>(type: "INTEGER", nullable: false),
                     CategoryId = table.Column<long>(type: "INTEGER", nullable: false),
-                    BrabdId = table.Column<long>(type: "INTEGER", nullable: false),
-                    BrandId = table.Column<long>(type: "INTEGER", nullable: true),
+                    BrandId = table.Column<long>(type: "INTEGER", nullable: false),
                     ProductStatus = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
-                    ModiefiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -88,7 +87,8 @@ namespace BmesRestApi.Migrations
                         name: "FK_Products_Brands_BrandId",
                         column: x => x.BrandId,
                         principalTable: "Brands",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,

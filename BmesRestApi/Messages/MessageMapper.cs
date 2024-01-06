@@ -126,7 +126,7 @@ namespace BmesRestApi.Messages
 				product.IsFeatured = productDto.IsFeatured;
 				product.CategoryId = productDto.CategoryId;
 				product.BrandId = productDto.BrandId;
-				product.CreatedDate = productDto.CreatedDate;
+				product.CreateDate = productDto.CreateDate;
 				product.ModifiedDate = productDto.ModifiedDate;
 
             }
@@ -160,7 +160,7 @@ namespace BmesRestApi.Messages
                 productDto.IsFeatured = product.IsFeatured;
                 productDto.CategoryId = product.CategoryId;
                 productDto.BrandId = product.BrandId;
-                productDto.CreatedDate = product.CreatedDate;
+                productDto.CreateDate = product.CreateDate;
                 productDto.ModifiedDate = product.ModifiedDate;
 
             }

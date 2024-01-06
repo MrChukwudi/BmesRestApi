@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BmesRestApi.Migrations
 {
     [DbContext(typeof(BmesDbContext))]
-    [Migration("20231219023931_Initial")]
-    partial class Initial
+    [Migration("20231229012603_ProductCatalogue")]
+    partial class ProductCatalogue
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace BmesRestApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BrabdStatus")
+                    b.Property<int>("BrandStatus")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset>("CreatedDate")
@@ -44,7 +44,7 @@ namespace BmesRestApi.Migrations
                     b.Property<string>("MetaKeywords")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("ModiefiedDate")
+                    b.Property<DateTimeOffset>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -82,7 +82,7 @@ namespace BmesRestApi.Migrations
                     b.Property<string>("MetaKeywords")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("ModiefiedDate")
+                    b.Property<DateTimeOffset>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -102,10 +102,7 @@ namespace BmesRestApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("BrabdId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long?>("BrandId")
+                    b.Property<long>("BrandId")
                         .HasColumnType("INTEGER");
 
                     b.Property<long>("CategoryId")
@@ -138,7 +135,7 @@ namespace BmesRestApi.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("ModiefiedDate")
+                    b.Property<DateTimeOffset>("ModifiedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -153,7 +150,7 @@ namespace BmesRestApi.Migrations
                     b.Property<int>("ProductStatus")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int>("QuantityInStock")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SKU")
@@ -178,7 +175,9 @@ namespace BmesRestApi.Migrations
                 {
                     b.HasOne("BmesRestApi.Models.Product.Brand", "Brand")
                         .WithMany()
-                        .HasForeignKey("BrandId");
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BmesRestApi.Models.Product.Category", "Category")
                         .WithMany()
