@@ -19,6 +19,15 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Building Materials E-Store", Version = "v1" });
 });
 
+
+//Adding Services for Memory Cahching and Sessions <> Remember to go and instruct your App to Use Session:
+builder.Services.AddMemoryCache();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
+
+
+
 //Registering/Adding Our DbContext Class Service:
 builder.Services.AddDbContext<BmesDbContext>(options =>
     options.UseSqlite(builder.Configuration["Data:BmesApi:ConnectionString"]));
@@ -28,6 +37,8 @@ builder.Services.AddDbContext<BmesDbContext>(options =>
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IBrandRepository, BrandRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<ICartRepository, CartRepository>();
+builder.Services.AddTransient<ICartItemRepository, CartItemRepository>();
 
 
 //Registering our Services and their Interfaces
@@ -35,6 +46,8 @@ builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IBrandService, BrandService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICatalogueService, CatalogueService>();
+builder.Services.AddTransient<ICartService, CartService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 
@@ -54,6 +67,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Building Materials E-Store V1");
     });
 }
+
+app.UseSession();
 
 app.UseAuthorization();
 

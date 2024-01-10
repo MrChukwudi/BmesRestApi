@@ -40,6 +40,10 @@
     <None Remove="Messages\Requests\Category\" />
     <None Remove="Messages\Response\Brand\" />
     <None Remove="Messages\Response\Category\" />
+    <None Remove="Models\Cart\" />
+    <None Remove="Messages\Requests\Cart\" />
+    <None Remove="Messages\Response\Cart\" />
+    <None Remove="Messages\DataTransferObjects\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -64,5 +68,9 @@
     <Folder Include="Messages\Response\Brand\" />
     <Folder Include="Messages\Response\Brand\" />
     <Folder Include="Messages\Response\Category\" />
+    <Folder Include="Models\Cart\" />
+    <Folder Include="Messages\Requests\Cart\" />
+    <Folder Include="Messages\Response\Cart\" />
+    <Folder Include="Messages\DataTransferObjects\Cart\" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 ﻿using System;
+using BmesRestApi.Messages.DataTransferObjects.Cart;
 using BmesRestApi.Messages.DataTransferObjects.Product;
+using BmesRestApi.Models.Cart;
 using BmesRestApi.Models.Product;
 
 namespace BmesRestApi.Messages
@@ -169,6 +171,70 @@ namespace BmesRestApi.Messages
         }
 
 
+        public CartDto MapToCartDto(Cart cart)
+        {
+            var cartDto = new CartDto();
+            if (cart != null)
+            {
+                cartDto.Id = cart.Id;
+                cartDto.UniqueCartId = cart.UniqueCartId;
+                cartDto.CartStatus = (int)cart.CartStatus;
+                cartDto.CreateDate = cart.CreateDate;
+                cartDto.ModifiedDate = cart.ModifiedDate;
+                cartDto.IsDeleted = cart.IsDeleted;
+            }
+            return cartDto;
+        }
+
+        public Cart MapToCart(CartDto cartDto)
+        {
+            var cart = new Cart();
+
+            if (cartDto != null)
+            {
+                cart.Id = cartDto.Id;
+                cart.UniqueCartId = cartDto.UniqueCartId;
+                cart.CartStatus = (CartStatus)cartDto.CartStatus;
+                cart.CreateDate = cartDto.CreateDate;
+                cart.ModifiedDate = cartDto.ModifiedDate;
+                cart.IsDeleted = cartDto.IsDeleted;
+            };
+
+            return cart;
+        }
+
+        public CartItemDto MapToCartItemDto(CartItem cartItem)
+        {
+            CartItemDto cartItemDto = null;
+
+            if (cartItem.Product != null)
+            {
+                var productDto = MapToProductDto(cartItem.Product);
+
+                cartItemDto = new CartItemDto
+                {
+                    Id = cartItem.Id,
+                    CartId = cartItem.CartId,
+                    Product = productDto,
+                    Quantity = cartItem.Quantity
+                };
+            }
+
+            return cartItemDto;
+        }
+
+        public CartItem MapToCartItem(CartItemDto cartItemDto)
+        {
+            return new CartItem
+            {
+                CartId = cartItemDto.CartId,
+                ProductId = cartItemDto.Product.Id,
+                Quantity = cartItemDto.Quantity
+            };
+        }
+
+
+
 
 
         /*
@@ -221,6 +287,17 @@ namespace BmesRestApi.Messages
 			return productDtos;
 		}
 
+        //Mapping a list of Returned CartItems to CartDtos for sharing with a client:
+        public List<CartItemDto> MapToCartItemDtos(IEnumerable<CartItem> cartItems)
+        {
+            var cartItemDtos = new List<CartItemDto>();
+            foreach (var cartItem in cartItems)
+            {
+                var cartItemDto = MapToCartItemDto(cartItem);
+                cartItemDtos.Add(cartItemDto);
+            }
+            return cartItemDtos;
+        }
 
 
 

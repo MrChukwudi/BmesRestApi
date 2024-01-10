@@ -22,9 +22,11 @@ namespace BmesRestApi.Repositories.Implementations
         public Product FindProductById(long id)
         {
             var product = _context.Products.Find(id);
-            return product;
-
-            //throw new Exception($"Failed to get Product with Id {id}");
+            if (product != null)
+            {
+                return product;
+            }
+            throw new Exception($"Failed to get Product with Id {id}");
 
         }
 
