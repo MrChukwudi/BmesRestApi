@@ -8,16 +8,20 @@ using BmesRestApi.Repositories.Implementations;
 
 namespace BmesRestApi.Services.Implementations
 {
-	public class CartService : ICartService
-	{
+    public class CartService : ICartService
+    {
         private const string UniqueCartIdSessionKey = "UniqueCartId";
         private readonly ICartRepository _cartRepository;
         private readonly ICartItemRepository _cartItemRepository;
         private MessageMapper _messageMapper;
-        private readonly HttpContext _httpContext; //Because we need to work with Session/Cookies
+        private readonly HttpContext _httpContext;
         private readonly IProductRepository _productRepository;
-        public CartService(IHttpContextAccessor httpContextAccessor, ICartRepository cartRepository, ICartItemRepository cartItemRepository, IProductRepository productRepository)
-		{
+        public CartService(
+            IHttpContextAccessor httpContextAccessor,
+            ICartRepository cartRepository,
+            ICartItemRepository cartItemRepository,
+            IProductRepository productRepository)
+        {
             _cartRepository = cartRepository;
             _cartItemRepository = cartItemRepository;
             _messageMapper = new MessageMapper();
@@ -25,7 +29,6 @@ namespace BmesRestApi.Services.Implementations
             _productRepository = productRepository;
         }
 
-        //For adding Item To Cart:
         public AddItemToCartResponse AddItemToCart(AddItemToCartRequest addItemToCartRequest)
         {
             AddItemToCartResponse response = new AddItemToCartResponse();
@@ -93,8 +96,6 @@ namespace BmesRestApi.Services.Implementations
             return response;
         }
 
-
-        //For Removing Item From Cart:
         public RemoveItemFromCartResponse RemoveItemFromCart(RemoveItemFromCartRequest removeItemFromCartRequest)
         {
             RemoveItemFromCartResponse response = new RemoveItemFromCartResponse();
@@ -104,7 +105,6 @@ namespace BmesRestApi.Services.Implementations
             response.CartItemId = cartItem.Id;
             return response;
         }
-
 
         public string UniqueCartId()
         {

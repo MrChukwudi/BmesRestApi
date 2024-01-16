@@ -44,6 +44,10 @@
     <None Remove="Messages\Requests\Cart\" />
     <None Remove="Messages\Response\Cart\" />
     <None Remove="Messages\DataTransferObjects\Cart\" />
+    <None Remove="Models\Address\" />
+    <None Remove="Messages\DataTransferObjects\Address\" />
+    <None Remove="Models\Customer\" />
+    <None Remove="Messages\DataTransferObjects\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -72,5 +76,9 @@
     <Folder Include="Messages\Requests\Cart\" />
     <Folder Include="Messages\Response\Cart\" />
     <Folder Include="Messages\DataTransferObjects\Cart\" />
+    <Folder Include="Models\Address\" />
+    <Folder Include="Messages\DataTransferObjects\Address\" />
+    <Folder Include="Models\Customer\" />
+    <Folder Include="Messages\DataTransferObjects\Customer\" />
   </ItemGroup>
 </Project>
