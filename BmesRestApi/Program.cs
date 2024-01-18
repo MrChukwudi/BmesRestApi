@@ -41,6 +41,8 @@ builder.Services.AddTransient<ICartRepository, CartRepository>();
 builder.Services.AddTransient<ICartItemRepository, CartItemRepository>();
 builder.Services.AddTransient<IAddressRepository, AddressRepository>();
 builder.Services.AddTransient<IPersonRepository, PersonRepository>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+builder.Services.AddTransient<IOrderItemRepository, OrderItemRepository>();
 
 
 //Registering our Services and their Interfaces
@@ -49,6 +51,8 @@ builder.Services.AddTransient<IBrandService, BrandService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICatalogueService, CatalogueService>();
 builder.Services.AddTransient<ICartService, CartService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<ICheckoutService, CheckoutService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 

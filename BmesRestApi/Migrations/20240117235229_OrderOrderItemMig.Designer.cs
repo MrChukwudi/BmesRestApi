@@ -3,6 +3,7 @@ using System;
 using BmesRestApi.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BmesRestApi.Migrations
 {
     [DbContext(typeof(BmesDbContext))]
-    partial class BmesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240117235229_OrderOrderItemMig")]
+    partial class OrderOrderItemMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -474,7 +477,7 @@ namespace BmesRestApi.Migrations
                         .IsRequired();
 
                     b.HasOne("BmesRestApi.Models.Customer.Customer", "Customer")
-                        .WithMany("Oders")
+                        .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -530,8 +533,6 @@ namespace BmesRestApi.Migrations
             modelBuilder.Entity("BmesRestApi.Models.Customer.Customer", b =>
                 {
                     b.Navigation("Addresses");
-
-                    b.Navigation("Oders");
                 });
 
             modelBuilder.Entity("BmesRestApi.Models.Order.Order", b =>

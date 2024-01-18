@@ -48,6 +48,12 @@
     <None Remove="Messages\DataTransferObjects\Address\" />
     <None Remove="Models\Customer\" />
     <None Remove="Messages\DataTransferObjects\Customer\" />
+    <None Remove="Models\Order\" />
+    <None Remove="Messages\Requests\Checkout\" />
+    <None Remove="Messages\Response\Checkout\" />
+    <None Remove="Messages\DataTransferObjects\Order\" />
+    <None Remove="Messages\Requests\Order\" />
+    <None Remove="Messages\Response\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -80,5 +86,11 @@
     <Folder Include="Messages\DataTransferObjects\Address\" />
     <Folder Include="Models\Customer\" />
     <Folder Include="Messages\DataTransferObjects\Customer\" />
+    <Folder Include="Models\Order\" />
+    <Folder Include="Messages\Requests\Checkout\" />
+    <Folder Include="Messages\Response\Checkout\" />
+    <Folder Include="Messages\DataTransferObjects\Order\" />
+    <Folder Include="Messages\Requests\Order\" />
+    <Folder Include="Messages\Response\Order\" />
   </ItemGroup>
 </Project>

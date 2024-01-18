@@ -3,13 +3,13 @@ using System.Net.Mail;
 using BmesRestApi.Messages.DataTransferObjects.Address;
 using BmesRestApi.Messages.DataTransferObjects.Cart;
 using BmesRestApi.Messages.DataTransferObjects.Customer;
-
+using BmesRestApi.Messages.DataTransferObjects.Order;
 using BmesRestApi.Messages.DataTransferObjects.Product;
 using BmesRestApi.Messages.DataTransferObjects.Shared;
 using BmesRestApi.Models.Address;
 using BmesRestApi.Models.Cart;
 using BmesRestApi.Models.Customer;
-
+using BmesRestApi.Models.Order;
 using BmesRestApi.Models.Product;
 using BmesRestApi.Models.Shared;
 
@@ -298,7 +298,7 @@ namespace BmesRestApi.Messages
 
 
         //Mapping to Customer:
-        public Customer MapToCustoer(CustomerDto customerDto)
+        public Customer MapToCustomer(CustomerDto customerDto)
         {
             var person = new Person();
             if(customerDto != null)
@@ -389,6 +389,75 @@ namespace BmesRestApi.Messages
 
             return personDto;
         }
+
+
+
+        public OrderDto MapToOrderDto(Order order)
+        {
+            var orderDto = new OrderDto
+            {
+                Id = order.Id,
+                OrderTotal = order.OrderTotal,
+                OrderItemTotal = order.OrderTotal,
+                ShippingCharge = order.ShippingCharge,
+                CustomerId = order.CustomerId,
+                OrderStatus = (int)order.OrderStatus,
+                CreateDate = order.CreateDate,
+                ModifiedDate = order.ModifiedDate,
+                IsDeleted = order.IsDeleted
+            };
+
+            return orderDto;
+        }
+
+        public Order MapToOrder(OrderDto orderDto)
+        {
+            return new Order
+            {
+                Id = orderDto.Id,
+                OrderTotal = orderDto.OrderTotal,
+                OrderItemTotal = orderDto.OrderTotal,
+                ShippingCharge = orderDto.ShippingCharge,
+                CustomerId = orderDto.CustomerId,
+                OrderStatus = (OrderStatus)orderDto.OrderStatus,
+                CreateDate = orderDto.CreateDate,
+                ModifiedDate = orderDto.ModifiedDate,
+                IsDeleted = orderDto.IsDeleted
+            };
+        }
+
+        public OrderItemDto MapToOrderItemDto(OrderItem orderItem)
+        {
+            OrderItemDto orderItemDto = null;
+
+            if (orderItem?.Product != null)
+            {
+                var productDto = MapToProductDto(orderItem.Product);
+
+                orderItemDto = new OrderItemDto
+                {
+                    Id = orderItem.Id,
+                    OrderId = orderItem.OrderId,
+                    Product = productDto,
+                    Quantity = orderItem.Quantity
+                };
+            }
+
+            return orderItemDto;
+        }
+
+        public OrderItem MapToOrderItem(OrderItemDto orderItemDto)
+        {
+            return new OrderItem
+            {
+                OrderId = orderItemDto.OrderId,
+                ProductId = orderItemDto.Product.Id,
+                Quantity = orderItemDto.Quantity
+            };
+        }
+
+
+
 
         /*
 		 ADDING MAPPINGS FOR LISTS
