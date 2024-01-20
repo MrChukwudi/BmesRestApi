@@ -1,11 +1,11 @@
 ﻿using System;
+using BmesRestApi.Messages.DataTransferObjects.Order;
+
 namespace BmesRestApi.Messages.Response.Order
 {
-	public class GetOrderResponse
+	public class GetOrderResponse : ResponseBase
 	{
-		public GetOrderResponse()
-		{
-		}
-	}
+        public OrderDto Order { get; set; }
+    }
 }
 

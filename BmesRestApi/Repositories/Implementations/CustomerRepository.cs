@@ -4,11 +4,11 @@ using BmesRestApi.Models.Customer;
 
 namespace BmesRestApi.Repositories.Implementations
 {
-	public class CutsomerRepository : ICustomerRepository
+	public class CustomerRepository : ICustomerRepository
     {
 		private readonly BmesDbContext _context;
 
-		public CutsomerRepository(BmesDbContext context)
+		public CustomerRepository(BmesDbContext context)
 		{
 			_context = context;
 		}

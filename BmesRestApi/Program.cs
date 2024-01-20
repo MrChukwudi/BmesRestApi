@@ -1,9 +1,13 @@
 ﻿//Setting up Our API Application Builder
+using System.Configuration;
 using BmesRestApi.Database;
+using BmesRestApi.Infrastructure;
+using BmesRestApi.Models.Shared;
 using BmesRestApi.Repositories;
 using BmesRestApi.Repositories.Implementations;
 using BmesRestApi.Services;
 using BmesRestApi.Services.Implementations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -28,9 +32,29 @@ builder.Services.AddSession();
 
 
 
+
+
 //Registering/Adding Our DbContext Class Service:
 builder.Services.AddDbContext<BmesDbContext>(options =>
     options.UseSqlite(builder.Configuration["Data:BmesApi:ConnectionString"]));
+
+
+
+//Registering/Adding Our IdentityDbContext Class Service:
+builder.Services.AddDbContext<BmesIdentityDbContext>(options =>
+    options.UseSqlite(builder.Configuration["Data:BmesIdentity:ConnectionString"]));
+//Adding Identity Service to our project, and directing it to make use of EntityFramework
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<BmesIdentityDbContext>();
+
+//Registering our Extension Method for Adding the JWT Auth:
+builder.Services.AddJwtAuth(builder.Configuration);
+
+
+
+
+
+
+
 
 
 //Adding/Registering my Repository <==> Interface Pair services
@@ -40,6 +64,7 @@ builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
 builder.Services.AddTransient<ICartItemRepository, CartItemRepository>();
 builder.Services.AddTransient<IAddressRepository, AddressRepository>();
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 builder.Services.AddTransient<IPersonRepository, PersonRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddTransient<IOrderItemRepository, OrderItemRepository>();
