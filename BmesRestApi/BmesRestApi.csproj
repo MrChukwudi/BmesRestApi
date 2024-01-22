@@ -57,6 +57,8 @@
     <None Remove="Messages\Requests\Order\" />
     <None Remove="Messages\Response\Order\" />
     <None Remove="Infrastructure\" />
+    <None Remove="Messages\Requests\User\" />
+    <None Remove="Messages\Response\User\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -96,5 +98,7 @@
     <Folder Include="Messages\Requests\Order\" />
     <Folder Include="Messages\Response\Order\" />
     <Folder Include="Infrastructure\" />
+    <Folder Include="Messages\Requests\User\" />
+    <Folder Include="Messages\Response\User\" />
   </ItemGroup>
 </Project>

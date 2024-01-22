@@ -13,3 +13,4 @@ namespace BmesRestApi.Database
 	}
 }
 
+//This File allows us to create a Seperate Database to manage our User Authentication and Authorizations, and General User Security.
