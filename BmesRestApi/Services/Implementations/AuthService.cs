@@ -24,7 +24,7 @@ namespace BmesRestApi.Services.Implementations
             _authSettings = authSettings.Value; //This is how we used the IOptions<T> to retrieve authSettings Configurations
         }
 
-        public async Task<FindUserByEmailResponse> FindAsync(FindUserByEmailRequest request, CancellationToken cancellationToken)
+        public async Task<FindUserByEmailResponse> FindAsync(FindUserByEmailRequest request, CancellationToken cancellationToken = default)
         {
             var user = await _authRepository.FindAsync(request.Email, cancellationToken);
 
@@ -38,7 +38,7 @@ namespace BmesRestApi.Services.Implementations
             return findByEmailResponse;
         }
 
-        public async Task<RegisterResponse> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken)
+        public async Task<RegisterResponse> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken = default)
         {
             var messages = new List<string>();
 
@@ -83,7 +83,7 @@ namespace BmesRestApi.Services.Implementations
             }
         }
 
-        public async Task<LogInResponse> LogInAsync(LogInRequest request, CancellationToken cancellationToken)
+        public async Task<LogInResponse> LogInAsync(LogInRequest request, CancellationToken cancellationToken = default)
         {
             var messages = new List<string>();
 
