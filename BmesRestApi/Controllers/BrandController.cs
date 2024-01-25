@@ -16,7 +16,7 @@ namespace BmesRestApi.Controllers
 
     [ApiController]
 
-    public class BrandController : Controller
+    public class BrandController : ControllerBase
     {
         private readonly IBrandService _brandService;
 
@@ -28,7 +28,6 @@ namespace BmesRestApi.Controllers
 
 
         // GET: api/brand/id
-        [AllowAnonymous]
         [HttpGet("{id}")]
         public ActionResult<GetBrandResponse> GetBrand(long id)
         {
@@ -47,7 +46,9 @@ namespace BmesRestApi.Controllers
 
 
         //GET: api/brand
-        [AllowAnonymous]
+        //[Authorize(Roles = "Administrator")]
+        [Authorize]
+
         [HttpGet]
         public ActionResult<FetchBrandResponse> GetBrands()
         {

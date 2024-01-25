@@ -15,16 +15,16 @@ namespace BmesRestApi.Services.Implementations
 {
 	public class AuthService : IAuthService
 	{
-		private readonly AuthSettings _authSettings;
+        private readonly AuthSettings _authSettings;
         private readonly IAuthRepository _authRepository;
 
         public AuthService(IAuthRepository authRepository, IOptions<AuthSettings> authSettings)
         {
             _authRepository = authRepository;
-            _authSettings = authSettings.Value; //This is how we used the IOptions<T> to retrieve authSettings Configurations
+            _authSettings = authSettings.Value;
         }
 
-        public async Task<FindUserByEmailResponse> FindAsync(FindUserByEmailRequest request, CancellationToken cancellationToken = default)
+        public async Task<FindUserByEmailResponse> FindAsync(FindUserByEmailRequest request, CancellationToken cancellationToken)
         {
             var user = await _authRepository.FindAsync(request.Email, cancellationToken);
 
@@ -38,7 +38,7 @@ namespace BmesRestApi.Services.Implementations
             return findByEmailResponse;
         }
 
-        public async Task<RegisterResponse> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken = default)
+        public async Task<RegisterResponse> RegisterAsync(RegisterRequest request, CancellationToken cancellationToken)
         {
             var messages = new List<string>();
 
@@ -68,7 +68,7 @@ namespace BmesRestApi.Services.Implementations
             else
             {
 
-                foreach (var error in result.Errors) //IdentityResultObject contains a List of Errors that hget thrown when identity errors occur:
+                foreach (var error in result.Errors)
                 {
                     messages.Add(error.Description);
                 }
@@ -83,7 +83,7 @@ namespace BmesRestApi.Services.Implementations
             }
         }
 
-        public async Task<LogInResponse> LogInAsync(LogInRequest request, CancellationToken cancellationToken = default)
+        public async Task<LogInResponse> LogInAsync(LogInRequest request, CancellationToken cancellationToken)
         {
             var messages = new List<string>();
 
@@ -144,6 +144,7 @@ namespace BmesRestApi.Services.Implementations
             var securityToken = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
             return jwtSecurityTokenHandler.WriteToken(securityToken);
         }
+
     }
 }
 

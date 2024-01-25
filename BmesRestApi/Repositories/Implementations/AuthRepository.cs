@@ -1,5 +1,4 @@
-﻿using System;
-using BmesRestApi.Models.Shared;
+﻿using BmesRestApi.Models.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,26 +23,33 @@ namespace BmesRestApi.Repositories.Implementations
 
 			if (result.Succeeded)
 			{
-				await _userManager.AddToRoleAsync(user, UserRole.RegisteredUser.ToString());
-			}
+                var addToRoleResult  = await _userManager.AddToRoleAsync(user, UserRole.RegisteredUser.ToString());
 
-			return result;
-        }
+
+                if (!addToRoleResult.Succeeded)
+                {
+                    throw new Exception("User not Successfuly added to Roles!!!");
+                }
+            }
+
+            return result;
+
+            }
 
 
         //Login a User
         public async Task<bool> LogInAsync(string email, string password, CancellationToken cancellationToken)
         {
-            var result = await _signInManager.PasswordSignInAsync(
-                email, password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(email, password, false, false);
             return result.Succeeded;
         }
 
         //Find a User by Email:
-        public async Task<User> FindAsync(string request, CancellationToken cancellationToken)
+        public async Task<User> FindAsync(string email, CancellationToken cancellationToken)
         {
-            return await _userManager.Users.FirstOrDefaultAsync(u => u.Email == request, cancellationToken);
+            return await _userManager.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
         }
+
 
 
 
@@ -51,9 +57,13 @@ namespace BmesRestApi.Repositories.Implementations
         public async Task<IList<string>> FindUserRolesAsync(string email, CancellationToken cancellationToken)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
-            var roles = await _userManager.GetRolesAsync(user);
 
-            return roles;
+            if (user != null)
+            {
+                return await _userManager.GetRolesAsync(user);
+            }
+
+            return new List<string>();
         }
     }
 }

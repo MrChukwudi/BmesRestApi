@@ -49,3 +49,22 @@ dotnet ef database update
 
 
 dotnet ef migrations add ProductCatalogue
+
+
+
+tHE aDMIN:
+
+{
+  "name": "Desire Dee",
+  "email": "test@gmail.com",
+  "password": "Pass1234!",
+  "roles": [
+    "Administrator", "RegisteredUser"
+  ]
+}
+
+
+                Name = "Chinedu Ogbu",
+                UserName = "admins@yahoo.com",
+                Email = "admins@yahoo.com"
+            Password: "MyGodIsGood2*");

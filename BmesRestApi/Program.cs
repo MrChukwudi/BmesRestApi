@@ -22,7 +22,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Building Materials E-Store", Version = "v1" });
 
-    //Configuring Swagger for Authenticatication:
+    //Configuring Swagger for working with Authenticatication:
     c.AddSecurityDefinition("Bearer",
         new OpenApiSecurityScheme
         {
@@ -136,3 +136,14 @@ app.MapControllers();
 
 app.Run();
 
+// Create a service scope to get an BmesIdentityDbContext instance using DI
+using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+{
+    var dbContext = serviceScope.ServiceProvider.GetService<BmesIdentityDbContext>();
+    var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+    var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
+    // Create the Db if it doesn't exist and applies any pending migration.
+    //dbContext.Database.Migrate();
+
+   await IdentityDbSeeder.Seed(dbContext, roleManager, userManager);
+}

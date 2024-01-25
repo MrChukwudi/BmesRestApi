@@ -12,7 +12,7 @@ namespace BmesRestApi.Controllers
     [ApiController]
 
 
-    public class CategoryController : Controller
+    public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
 

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BmesRestApi.Migrations.BmesIdentityDb
 {
     [DbContext(typeof(BmesIdentityDbContext))]
-    [Migration("20240120174455_initial")]
+    [Migration("20240124154748_initial")]
     partial class initial
     {
         /// <inheritdoc />

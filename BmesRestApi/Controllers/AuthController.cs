@@ -12,10 +12,10 @@ namespace BmesRestApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : Controller
+    public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-        private AuthController(IAuthService authService)
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
